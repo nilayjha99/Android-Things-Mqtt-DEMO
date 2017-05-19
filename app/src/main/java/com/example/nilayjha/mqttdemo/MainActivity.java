@@ -1,7 +1,8 @@
 package com.example.nilayjha.mqttdemo;
 
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -20,14 +21,14 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity implements MqttCallback {
+public class MainActivity extends Activity implements MqttCallback {
 
     // led pin
-    private final String PIN_LED = "BCM6";
+    private final String PIN_LED = "BCM5";
     // Paho Mqtt constants
-    private final String TAG = "MqttCemo";
-    private final String TOPIC = "test";
-    private final String BROKER_URL = "iot.eclipse.org:1883";
+    private final String TAG = "MqttDemo";
+    private final String TOPIC = "testauber";
+    private final String BROKER_URL = "tcp://iot.eclipse.org:1883";
     private final String CLIENT_ID = "aubergineTestMqttAT";
     private final int QOS = 2;
     // to access any device connected to GPIO on rpi3
@@ -68,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements MqttCallback {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView,
                                                  boolean isChecked) {
-                        setLedState(isChecked);
-                        sendMessage(isChecked?"YES":"NO");
+                        setLedState(!isChecked);
+                        sendMessage(isChecked?"OFF":"ON");
                     }
                 });
     }
@@ -124,7 +125,9 @@ public class MainActivity extends AppCompatActivity implements MqttCallback {
     private void setLedState(boolean isOn) {
         try {
             mLedGpio.setValue(isOn);
-            led_switch.setChecked(isOn);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                led_switch.setChecked(isOn);
+            }
         } catch (IOException e) {
             Log.e(TAG, "Error on setLedState", e);
         }
@@ -169,11 +172,11 @@ public class MainActivity extends AppCompatActivity implements MqttCallback {
         switch (payload) {
             case "ON":
                 Log.d(TAG, "LED ON");
-                setLedState(true);
+                setLedState(false);
                 break;
             case "OFF":
                 Log.d(TAG, "LED OFF");
-                setLedState(false);
+                setLedState(true);
                 break;
             default:
                 Log.d(TAG, "Message not supported!");
