@@ -1,6 +1,6 @@
 "# Android-Things-Mqtt-DEMO" 
 
-If you are new to Anroid Things then I will recommend to go through the below mentioned links:
+If you are new to Anroid Things then I would recommend you to go through the below mentioned links:
 <ul>
 <li><a href="https://developer.android.com/things/training/first-device/create-studio-project.html" target="_blank">Android Things Training</a>
 </ul>
