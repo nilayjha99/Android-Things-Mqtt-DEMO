@@ -5,11 +5,13 @@ If you are new to Anroid Things then I would recommend you to go through the bel
 <li><a href="https://developer.android.com/things/training/first-device/create-studio-project.html" target="_blank">Android Things Training</a>
 </ul>
 
-This repo contains demo application for using MQTT on android things via <b>"Eclipse Paho"</b> MQTT client.
+This repo contains demo application for using MQTT on android things via <b>"Eclipse Paho MQTT Client"</b>.
 In order to use the the project you will require:
 
 <ul>
 <li>Android Studio 2.2+
+<li>Android SDK with API 24(Android 7.0).
+<li>Android SDK Tools with v25.0.3 or higher.
 <li>Rasberry-Pi 3 with Android-Things installed.
 <li>A bread-board.
 <li>2 x jumper wires (female-to-male).
