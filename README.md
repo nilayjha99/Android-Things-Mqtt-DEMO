@@ -27,7 +27,7 @@ If you want to try the broker MQTT broker on your server/local machine, then you
 <ul>
 <li><a href="http://www.eclipse.org/mosquitto/download/" target="_blank">Eclipse Mosquitto MQTT Broker</a>
 </ul>
-or can use any other broker supported by <b>"Eclipse Paho MQTT Client Library"<b>.
+or can use any other broker supported by <b>"Eclipse Paho MQTT Client Library"</b>.
 
 <b>NOTE:</b>
 <blockquote> In order to use your own MQTT broker just change the 
