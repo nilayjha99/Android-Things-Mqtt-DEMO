@@ -25,17 +25,11 @@ public class MainActivity extends Activity implements MqttCallback {
 
     // led pin
     private final String PIN_LED = "BCM5";
-    // Tag for logger
+    // Paho Mqtt constants
     private final String TAG = "MqttDemo";
-    // Paho Mqtt constants    
-    // The topic to which one publish message 
-    //or subscribe to
     private final String TOPIC = "testauber";
-    // MQTT broker URL
     private final String BROKER_URL = "tcp://iot.eclipse.org:1883";
-    // MQTT client ID (can be any valid string)
     private final String CLIENT_ID = "aubergineTestMqttAT";
-    // Quality of Service 
     private final int QOS = 2;
     // to access any device connected to GPIO on rpi3
     private Gpio mLedGpio;
@@ -51,7 +45,7 @@ public class MainActivity extends Activity implements MqttCallback {
         // register the GPIO pin for the output
         try {
             // Create GPIO connection for LED
-            // listen to GPIO on pin BCM5
+            // listen to GPIO on pin BCM6
             mLedGpio = service.openGpio(PIN_LED);
 
             // Configure as an output
@@ -69,7 +63,6 @@ public class MainActivity extends Activity implements MqttCallback {
             e.printStackTrace();
         }
         
-        //click listner to for Switch on UI
         led_switch = (Switch) findViewById(R.id.ledswitch);
         led_switch.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
@@ -85,23 +78,14 @@ public class MainActivity extends Activity implements MqttCallback {
     //method to publish message
     private void sendMessage(String message){
         try{
-            // get the client
             client = getClient();
-            // if the client is not connected
-            // to broker then connect it
-	    // with valid connection options
             if(!client.isConnected()){
                 client.connect(getConnectops());
             }
-            //Initialize MqttMessage object
             MqttMessage mqttMessage = new MqttMessage();
-            // set the message to be sent
             mqttMessage.setPayload(message.getBytes());
-	    // set the MQTT quality of service
             mqttMessage.setQos(QOS);
-	    // publish message to the topic
             client.publish(TOPIC,mqttMessage);
-            // disconnect the client 
             client.disconnect();
         }
         catch (MqttPersistenceException e) {
@@ -112,8 +96,6 @@ public class MainActivity extends Activity implements MqttCallback {
     }
 
     // initiate client
-    // return existing object if already initialized
-    // else return a new object
     private MqttClient getClient() throws MqttException {
         if (client!=null){
             return client;
@@ -156,9 +138,7 @@ public class MainActivity extends Activity implements MqttCallback {
         super.onDestroy();
         if(client!=null){
             try {
-                // disconnect the client
                 client.disconnect();
-                // close client
                 client.close();
             } catch (MqttException e) {
                 e.printStackTrace();
@@ -175,8 +155,6 @@ public class MainActivity extends Activity implements MqttCallback {
         }
     }
 
-    // in the case of connection lost
-    // reconnect and subscribe to the topic
     @Override
     public void connectionLost(Throwable throwable) {
         Log.d(TAG, "connectionLost....reconnecting");
@@ -187,7 +165,6 @@ public class MainActivity extends Activity implements MqttCallback {
         }
     }
 
-    // to perform action based on the received MQTT message
     @Override
     public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
         String payload = new String(mqttMessage.getPayload());
