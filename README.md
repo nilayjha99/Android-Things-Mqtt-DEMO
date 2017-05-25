@@ -25,6 +25,16 @@ The following diagram shows configuration:
 <img src="Android-Things-MQTT-demo.png" width="640px" alt="hardware configuration"/>
 </p>
 
+Once you are done with setting up the project in Android Studio and have configured and connected the Rasberry pi 3,
+you can do these things in order to test/run/install the app on Rasberry pi 3.
++ Run the app from studio.
++ or Install the app via adb.
+
+<blockquote>
+<b>You can also use this project for othet Android Things compitable boards just change the pin name according,
+here "BCM5"</b>
+</blockquote>
+
 If you want to try the broker MQTT broker on your server/local machine, then you can opt for Mosquitto MQTT broker:
 <ul>
 <li><a href="http://www.eclipse.org/mosquitto/download/" target="_blank">Eclipse Mosquitto MQTT Broker</a>
@@ -48,6 +58,6 @@ You can use any of the third party MQTT client apps available on play store.for 
 <ul><li><a  href="https://play.google.com/store/apps/details?id=net.sabamiso.android.simplemqttviewer" target="_blank">
 Simple MQTT Viewer</a></ul>
 
-For more information on <b>"Eclipse Paho MQTT client"<b> please visit:
+For more information on <b>"Eclipse Paho MQTT Client"</b> please visit:
 <ul><li><a  href="https://eclipse.org/paho/" target="_blank">
 Eclipse Paho</a></ul>
