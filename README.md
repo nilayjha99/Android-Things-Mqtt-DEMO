@@ -31,7 +31,7 @@ you can do these things in order to test/run/install the app on Rasberry pi 3.
 + or Install the app via adb.
 
 <blockquote>
-<b>You can also use this project for othet Android Things compitable boards just change the pin name accordingly,
+<b>You can also use this project for other Android Things compitable boards just change the pin name accordingly,
 here "BCM5"</b>
 </blockquote>
 
