@@ -35,7 +35,7 @@ you can do these things in order to test/run/install the app on Rasberry pi 3.
 here "BCM5"</b>
 </blockquote>
 
-If you want to try the broker MQTT broker on your server/local machine, then you can opt for Mosquitto MQTT broker:
+If you want to try the MQTT broker on your server/local machine, then you can opt for Mosquitto MQTT broker:
 <ul>
 <li><a href="http://www.eclipse.org/mosquitto/download/" target="_blank">Eclipse Mosquitto MQTT Broker</a>
 </ul>
